@@ -16,11 +16,12 @@ podTemplate(yaml: '''
 {
     node(POD_LABEL) {
         stage('Build') { 
-            
+            container('jnlp')
+            {
                 sh '''
                     echo "Go Build"
                     '''
-            
+            }
         }
     }
 }    
