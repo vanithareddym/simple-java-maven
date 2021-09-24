@@ -14,18 +14,11 @@ podTemplate(yaml: '''
 )
  
 {
-    node(POD_LABEL)
-    {
-         stage('Build') 
-            { 
-                    steps 
-                    {
-                        sh 'mvn -B -DskipTests clean package' 
-                    }  
-             }
-               
-    
-            
-        
+    node(POD_LABEL) {
+        stage('Build') { 
+            steps {
+                sh 'mvn -B -DskipTests clean package' 
+            }
+        }
     }
 }    
