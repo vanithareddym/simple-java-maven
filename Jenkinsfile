@@ -5,13 +5,32 @@ podTemplate(yaml: '''
       containers:
       - name: 'jnlp' 
         image: 'maven:3.8.1-adoptopenjdk-11'
-    ''') {
-
-    node(POD_LABEL) {
-        stage('Build') { 
-            steps {
-                sh 'mvn -B -DskipTests clean package' 
-            }
+        
+    persistentVolumeClaim:
+      mountPath: '/var/jenkins_home'
+      claimName: 'jenkins-pv-claim'
+      
+    '''
+)
+ 
+{
+    node(POD_LABEL)
+    {
+        stage('Get a Maven project') 
+        {  
+            git 'https://github.com/vanithareddym/simple-java-maven.git'
+            stage('Build') 
+            { 
+                steps 
+                {
+                    sh '''
+                    echo "maven build"
+                    mvn -B -DskipTests clean package
+                    '''
+                }
+            }   
+    
+            
         }
     }
-}
+}    
