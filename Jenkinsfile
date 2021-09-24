@@ -19,14 +19,17 @@ podTemplate(yaml: '''
         stage('Get a Maven project') 
         {  
             git 'https://github.com/vanithareddym/simple-java-maven.git'
-            stage('Build') 
-            { 
-                steps 
-                {
-                    sh '''
-                    echo "maven build"
-                    mvn -B -DskipTests clean package
-                    '''
+            container('jnlp')
+            {
+                stage('Build') 
+                { 
+                    steps 
+                    {
+                        sh '''
+                        echo "maven build"
+                        mvn -B -DskipTests clean package
+                        '''
+                    }    
                 }
             }   
     
