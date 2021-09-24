@@ -4,7 +4,7 @@ podTemplate(yaml: '''
     spec:
       containers:
       - name: 'jnlp' 
-        image: 'maven:3.8.1-adoptopenjdk-11'
+        image: 'jenkins/inbound-agent:4.3-4'
         
     persistentVolumeClaim:
       mountPath: '/var/jenkins_home'
