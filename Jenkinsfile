@@ -16,20 +16,16 @@ podTemplate(yaml: '''
 {
     node(POD_LABEL)
     {
-        stage('Get a Maven project') 
-        {  
-          
-          
-                stage('Build') 
-                { 
+         stage('Build') 
+            { 
                     steps 
                     {
                         sh 'mvn -B -DskipTests clean package' 
                     }  
-                }
+             }
                
     
             
-        }
+        
     }
 }    
