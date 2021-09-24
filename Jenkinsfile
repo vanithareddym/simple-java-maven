@@ -17,7 +17,9 @@ podTemplate(yaml: '''
     node(POD_LABEL) {
         stage('Build') { 
             
-                sh 'mvn -B -DskipTests clean package' 
+                sh '''
+                    echo "Go Build"
+                    '''
             
         }
     }
