@@ -18,8 +18,8 @@ podTemplate(yaml: '''
     {
         stage('Get a Maven project') 
         {  
-            git 'https://github.com/vanithareddym/simple-java-maven.git'
-            
+          
+          
                 stage('Build') 
                 { 
                     steps 
