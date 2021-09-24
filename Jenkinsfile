@@ -24,11 +24,8 @@ podTemplate(yaml: '''
                 { 
                     steps 
                     {
-                        sh '''
-                        echo "maven build"
-                        mvn -B -DskipTests clean package
-                        '''
-                    }    
+                        sh 'mvn -B -DskipTests clean package' 
+                    }  
                 }
                
     
